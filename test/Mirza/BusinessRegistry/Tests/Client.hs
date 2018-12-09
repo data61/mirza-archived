@@ -321,13 +321,13 @@ clientSpec = do
           getCreationTime ky1InfoCreationTime
             `shouldSatisfy` (betweenInclusive b1K1PreInsertionTime b1K1PostInsertionTime)
 
-          step "That getPublicKey fails gracefully searching for a non existant key"
+          step "That getPublicKey fails gracefully searching for a non existent key"
           b1InvalidKeyResponse <- http (getPublicKey (BRKeyId nil))
           b1InvalidKeyResponse `shouldSatisfy` isLeft
           b1InvalidKeyResponse `shouldSatisfy` (checkFailureStatus NS.notFound404)
           b1InvalidKeyResponse `shouldSatisfy` (checkFailureMessage "Public key with the given id not found.")
 
-          step "That getPublicKeyInfo fails gracefully searching for a non existant key"
+          step "That getPublicKeyInfo fails gracefully searching for a non existent key"
           b1InvalidKeyInfoResponse <- http (getPublicKeyInfo (BRKeyId nil))
           b1InvalidKeyInfoResponse `shouldSatisfy` isLeft
           b1InvalidKeyInfoResponse `shouldSatisfy` (checkFailureStatus NS.notFound404)
