@@ -255,7 +255,7 @@ insertDummies = do
 
 -- | Produces the minimal +ve NominalDiffTime (epsilon).
 epsNominalDiffTime :: NominalDiffTime
-epsNominalDiffTime = succ $ toEnum 0
+epsNominalDiffTime = succ $ toEnum $ 1000000 - 1
 
 -- | Produces the next UTCTime after the supplied time (epsilon after the supplied time).
 nextUTCTime :: UTCTime -> UTCTime
