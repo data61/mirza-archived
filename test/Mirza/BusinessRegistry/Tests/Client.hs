@@ -398,8 +398,7 @@ clientSpec = do
           b1K3InfoResponse `shouldSatisfy` checkField keyInfoRevocation ((== fromRight userB1U1Response) . snd . fromJust)
           -- We check that the time through this responce ~matches the time that was given when we revoked the key.
           let b1K3RevokedResponseTime = (getRevocationTime . fromRight) b1K3RevokedResponse
-          -- liftIO $ print $ keyInfoRevocation (fromRight b1K3InfoResponse)
-          b1K3InfoResponse `shouldSatisfy` checkField keyInfoRevocation ((== b1K3RevokedResponseTime) . extractRevocationTime)
+          b1K3InfoResponse `shouldSatisfy` checkField  (extractRevocationTime . keyInfoRevocation) (== b1K3RevokedResponseTime)
 
           step "That the key status updates after the key is revoked"
           b1K3RevokedInfoResponse <- http (getPublicKeyInfo b1K3StoredKeyId)
