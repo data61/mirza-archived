@@ -57,7 +57,7 @@ import           Text.Email.Validate                      (toByteString)
 -- and accidentally operating on the wrong database.
 -- See: testDbConnectionStringSCS if you need a full connection string.
 testDbNameSCS :: DatabaseName
-testDbNameSCS = DatabaseName "testsupplychainserver"
+testDbNameSCS = DatabaseName "devsupplychainserver"
 
 -- | Default database connection string used when running tests for the SCS. Be
 -- careful using this construct as it could lead to problems...users not
